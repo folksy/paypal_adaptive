@@ -85,7 +85,7 @@ module PaypalAdaptive
       
       http.ca_path = @ssl_cert_path unless @ssl_cert_path.nil?
       http.ca_file = @ssl_cert_file unless @ssl_cert_file.nil?
-      http.ca_path = "certs" if Rails.env == "staging"
+      http.ca_path = "/etc/ssl/certs" if SSL_ENVS.include?( Rails.env )
 
       RAILS_DEFAULT_LOGGER.debug( "********** ca_file: #{ http.ca_file.inspect }" )
       RAILS_DEFAULT_LOGGER.debug( "********** ca_path: #{ http.ca_path.inspect }" )
