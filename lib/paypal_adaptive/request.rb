@@ -82,6 +82,10 @@ module PaypalAdaptive
       http = Net::HTTP.new(url.host, 443)
       http.use_ssl = true
       http.verify_mode = OpenSSL::SSL::VERIFY_PEER
+
+      RAILS_DEFAULT_LOGGER.debug( "********** @ssl_cert_file: #{ @ssl_cert_file.inspect }" )
+      RAILS_DEFAULT_LOGGER.debug( "********** @ssl_cert_path: #{ @ssl_cert_path.inspect }" )
+      
       http.ca_path = @ssl_cert_path unless @ssl_cert_path.nil?
       http.ca_file = @ssl_cert_file unless @ssl_cert_file.nil?
 
