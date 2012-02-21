@@ -82,12 +82,13 @@ module PaypalAdaptive
       http = Net::HTTP.new(url.host, 443)
       http.use_ssl = true
       http.verify_mode = OpenSSL::SSL::VERIFY_PEER
-
-      RAILS_DEFAULT_LOGGER.debug( "********** @ssl_cert_file: #{ @ssl_cert_file.inspect }" )
-      RAILS_DEFAULT_LOGGER.debug( "********** @ssl_cert_path: #{ @ssl_cert_path.inspect }" )
       
       http.ca_path = @ssl_cert_path unless @ssl_cert_path.nil?
       http.ca_file = @ssl_cert_file unless @ssl_cert_file.nil?
+      http.ca_path = "certs" if Rails.env == "staging"
+
+      RAILS_DEFAULT_LOGGER.debug( "********** ca_file: #{ http.ca_file.inspect }" )
+      RAILS_DEFAULT_LOGGER.debug( "********** ca_path: #{ http.ca_path.inspect }" )
 
       response_data = http.post(path, api_request_data, @headers).body
 
