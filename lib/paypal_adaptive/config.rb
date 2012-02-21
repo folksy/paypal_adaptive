@@ -53,10 +53,10 @@ module PaypalAdaptive
     end
 
     def config_filepath
-      if defined?(Rails)
-        Rails.root.join("config", "paypal_adaptive.yml")
+      if defined?( Rails )
+        File.join( Rails.root, "config", "paypal_adaptive.yml" )
       else
-        File.join(File.dirname(__FILE__), "..", "..", "config", "paypal_adaptive.yml")
+        File.join( File.dirname( __FILE__ ), "..", "..", "config", "paypal_adaptive.yml" )
       end
     end
 
