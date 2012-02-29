@@ -24,6 +24,13 @@ module PaypalAdaptive
       
       path = "#{@paypal_base_url}/cgi-bin/webscr"
       response_data = http.post(path, data).body
+
+      RAILS_DEFAULT_LOGGER.debug( "**************************************************" )
+      RAILS_DEFAULT_LOGGER.debug( "**************************************************" )
+      RAILS_DEFAULT_LOGGER.debug( "*** HTTP CA Path: #{ http.ca_path.inspect }" )
+      RAILS_DEFAULT_LOGGER.debug( "*** RESPONSE DATA: #{ response_data.inspect }" )
+      RAILS_DEFAULT_LOGGER.debug( "**************************************************" )
+      RAILS_DEFAULT_LOGGER.debug( "**************************************************" )
       
       @verified = response_data == "VERIFIED"
     end
