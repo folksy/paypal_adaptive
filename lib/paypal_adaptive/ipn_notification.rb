@@ -23,11 +23,13 @@ module PaypalAdaptive
       http.ca_path = "/etc/ssl/certs" if USE_SSL
       
       path = "#{@paypal_base_url}/cgi-bin/webscr"
-      response_data = http.post(path, data).body
+      response = http.post(path, data)
+      response_data = response.body
 
       RAILS_DEFAULT_LOGGER.debug( "**************************************************" )
       RAILS_DEFAULT_LOGGER.debug( "**************************************************" )
       RAILS_DEFAULT_LOGGER.debug( "*** HTTP CA Path: #{ http.ca_path.inspect }" )
+      RAILS_DEFAULT_LOGGER.debug( "*** RESPONSE DATA: #{ response.inspect }" )
       RAILS_DEFAULT_LOGGER.debug( "*** RESPONSE DATA: #{ response_data.inspect }" )
       RAILS_DEFAULT_LOGGER.debug( "**************************************************" )
       RAILS_DEFAULT_LOGGER.debug( "**************************************************" )
