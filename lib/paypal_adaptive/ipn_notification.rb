@@ -26,15 +26,15 @@ module PaypalAdaptive
       response = http.post(path, data)
       response_data = response.body
 
-      RAILS_DEFAULT_LOGGER.debug( "**************************************************" )
-      RAILS_DEFAULT_LOGGER.debug( "**************************************************" )
-      RAILS_DEFAULT_LOGGER.debug( "*** HTTP CA Path: #{ http.ca_path.inspect }" )
-      RAILS_DEFAULT_LOGGER.debug( "*** PATH: #{ path }" )
-      RAILS_DEFAULT_LOGGER.debug( "*** DATA: #{ data }" )
-      RAILS_DEFAULT_LOGGER.debug( "*** RESPONSE: #{ response.inspect }" )
-      RAILS_DEFAULT_LOGGER.debug( "*** RESPONSE DATA: #{ response_data.inspect }" )
-      RAILS_DEFAULT_LOGGER.debug( "**************************************************" )
-      RAILS_DEFAULT_LOGGER.debug( "**************************************************" )
+      # RAILS_DEFAULT_LOGGER.debug( "**************************************************" )
+      # RAILS_DEFAULT_LOGGER.debug( "**************************************************" )
+      # RAILS_DEFAULT_LOGGER.debug( "*** HTTP CA Path: #{ http.ca_path.inspect }" )
+      # RAILS_DEFAULT_LOGGER.debug( "*** PATH: #{ path }" )
+      # RAILS_DEFAULT_LOGGER.debug( "*** DATA: #{ data }" )
+      # RAILS_DEFAULT_LOGGER.debug( "*** RESPONSE: #{ response.inspect }" )
+      # RAILS_DEFAULT_LOGGER.debug( "*** RESPONSE DATA: #{ response_data.inspect }" )
+      # RAILS_DEFAULT_LOGGER.debug( "**************************************************" )
+      # RAILS_DEFAULT_LOGGER.debug( "**************************************************" )
       
       @verified = response_data == "VERIFIED"
     end
